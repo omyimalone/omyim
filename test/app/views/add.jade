@@ -1,0 +1,90 @@
+html 
+    head
+        title=title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(href='/css/w3.css', rel='stylesheet')
+        link(href='/css/bootstrap.min.css', rel='stylesheet')
+        link(href='/css/font-awesome.css', rel='stylesheet')
+        script(src="js/angular.js")
+        script(src="js/jquery.js")
+    body
+        div(ng-app="add" ng-controller="aCtrl")
+            nav(class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none" id="sidebar")
+                div(class="icon-bar")
+                    br
+                    a(class="active" ng-click="w3_close()" )
+                        i(class="fa fa-chevron-left fa-fw")
+                    a(href="/add" style="margin-top:5%")
+                        i(class="fa fa-plus fa-fw")
+                        |Add
+                    a(href="/list" style="margin-top:10%")
+                        i(class="fa fa-list fa-fw")
+                        |List
+            div(id="main")
+                header(class="w3-container w3-blue")
+                    h4(align="center")
+                        |ระบบจัดการหอพัก
+                    a(class="w3-opennav w3-xlarge" ng-click="w3_open()" id="openNav")
+                        |&#9776;Menu 
+                div(class="w3-container" style="margin-top:3%")
+                    table(class="table table-bordered")
+                        tr(class="alert alert-danger" align="center")
+                            td
+                                |เดือน
+                            td
+                                input(type="month" data-date-format="MMMM YYYY" class="date" ng-model="month" id="month")
+                        tr(class="alert alert-danger" align="center")
+                            td
+                                |ห้องที่
+                            td
+                                input(type="text" class="form-control" ng-model="room" required placeholder="xxxx")
+                        tr(class="alert alert-info")
+                            th
+                                | ค่าน้ำ
+                            th
+                        tr
+                            td
+                                |จำนวนที่ใช้(หน่วย)
+                            td
+                                input(type="number" class="form-control" ng-model="w_unit" required)
+                        tr
+                            td
+                                |ราคาต่อหน่วย
+                            td
+                                input(type="number" class="form-control" ng-model="w_ppu" required)
+                        tr
+                            td
+                                |รวม
+                            td
+                                label
+                                    |{{w_total=w_unit*w_ppu}}
+                                    |บาท
+                        tr
+                        tr(class="alert alert-warning" align="center")
+                            th
+                                | ค่าไฟ
+                            th
+                        tr
+                            td
+                                |จำนวนที่ใช้(หน่วย)
+                            td
+                                input(type="number" class="form-control" ng-model="e_unit" required)
+                        tr
+                            td
+                                |ราคาต่อหน่วย
+                            td
+                                input(type="number" class="form-control" ng-model="e_ppu" required)
+                        tr
+                            td
+                                |รวม
+                            td
+                                label
+                                    |{{ e_total= e_unit * e_ppu }}
+                                    |บาท
+                    button(class="btn btn-block btn-lg btn-success" ng-click="save()")
+                                    |Save
+                                
+
+        script(src="js/add.js")
+            
+       

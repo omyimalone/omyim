@@ -1,0 +1,83 @@
+html 
+    head
+        title=title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(href='/css/w3.css', rel='stylesheet')
+        link(href='/css/bootstrap.min.css', rel='stylesheet')
+        link(href='/css/font-awesome.css', rel='stylesheet')
+        script(src="/js/angular.js")
+        script(src="/js/jquery.js")
+        script(src="/js/detail.js")
+    body
+        div(ng-app="detail" ng-controller="dCtrl")
+            div(id="main")
+                header(class="w3-container w3-green")
+                    tr
+                        td
+                            a(href="/list")
+                                |Back
+                        td
+                            center 
+                                h2
+                                    |Room 
+                                    span(id="room_num")
+                                        =room
+                div(class="w3-container" style="margin-top:3%")
+                    table(class="table table-bordered")
+                        tr(class="alert alert-danger")
+                            td(width="45%")
+                                |เดือน
+                            td
+                                select(ng-model="selectedMonth" ng-options="x.month for x in month" 
+                                        class="btn btn-block" ng-change="select(selectedMonth)")
+
+                        tr(class="alert alert-info")
+                            th
+                                | ค่าน้ำ
+                            th
+                                
+                        tr
+                            td
+                                |จำนวนที่ใช้(หน่วย)
+                            td
+                                |{{w_unit}}
+                        tr
+                            td
+                                |ราคาต่อหน่วย
+                            td
+                                |{{w_ppu}}
+                        tr
+                            td
+                                |รวม
+                            td
+                                label
+                                    |{{w_total}}
+                                    | บาท
+                        tr
+                        tr(class="alert alert-warning" align="center")
+                            th
+                                | ค่าไฟ
+                            th
+                        tr
+                            td
+                                |จำนวนที่ใช้(หน่วย)
+                            td
+                                |{{e_unit}}
+                        tr
+                            td
+                                |ราคาต่อหน่วย
+                            td
+                                |{{e_ppu}}
+                        tr
+                            td
+                                |รวม
+                            td
+                                label
+                                    |{{e_total}}
+                                    |บาท
+                        
+                    button(class="btn btn-block btn-lg btn-success" ng-click="save()")
+                                    |Print Bill
+
+            
+       

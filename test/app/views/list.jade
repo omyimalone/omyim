@@ -1,0 +1,36 @@
+html 
+    head
+        title=title
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(href='/css/w3.css', rel='stylesheet')
+        link(href='/css/bootstrap.min.css', rel='stylesheet')
+        link(href='/css/font-awesome.css', rel='stylesheet')
+        script(src="js/angular.js")
+        script(src="js/jquery.js")
+        script(src="js/list.js")
+    body
+        div(ng-app="list" ng-controller="lCtrl")
+            nav(class="w3-sidenav w3-white w3-card-2 w3-animate-left" style="display:none" id="sidebar")
+                div(class="icon-bar")
+                    br
+                    a(class="active" ng-click="w3_close()" )
+                        i(class="fa fa-chevron-left fa-fw")
+                    a(href="/add" style="margin-top:5%")
+                        i(class="fa fa-plus fa-fw")
+                        |Add
+                    a(href="/list" style="margin-top:10%")
+                        i(class="fa fa-list fa-fw")
+                        |List
+            div(id="main")
+                header(class="w3-container w3-blue")
+                    h4(align="center")
+                        |ระบบจัดการหอพัก
+                    a(class="w3-opennav w3-xlarge" ng-click="w3_open()" id="openNav")
+                        |&#9776;Menu 
+                div(class="w3-container" style="margin-top:3%")
+                    div(class="well" style="height:450px")
+                        div(class="list-group")
+                            a(href="/detail/{{room.room}}" class="list-group-item" ng-repeat="room in list_room")
+                                |Room-{{room.room}}
+                                
+       
